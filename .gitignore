@@ -16,3 +16,7 @@ Output/
 .mypy_cache/
 .ruff_cache/
 *.log
+.reference/
+.AGENTS.md
+
+

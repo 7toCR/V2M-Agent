@@ -137,3 +137,9 @@ TODO
 - If the run fails with missing environment variables, check `.env` first.
 - If you only want reproducible open-source results, use `--skip-server-inference`.
 - If you set `--output-dir` outside the repository, the program will still write there and print the resolved path.
+
+## License and Community Guidelines
+
+This project is released under the [MIT License](LICENSE).
+
+Additional community expectations for attribution, reposting, commercial packaging, and acceptable reuse are documented in [CLAUSE.md](CLAUSE.md).
