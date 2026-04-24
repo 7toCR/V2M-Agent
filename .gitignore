@@ -10,6 +10,6 @@ wheels/
 .mypy_cache/
 .ruff_cache/
 *.log
-AGENTS.md
+/AGENTS.md
 /reference/
 
