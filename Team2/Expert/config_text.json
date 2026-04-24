@@ -1,0 +1,21 @@
+{
+  "model": {
+    "name": "deepseek-v3.2",
+    "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+    "api_key_env": "DASHSCOPE_API_KEY",
+    "temperature": 0,
+    "max_tokens": null
+  },
+  "expert": {
+    "name": "deepseek-v3.2",
+    "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+    "api_key_env": "DASHSCOPE_API_KEY",
+    "temperature": 0,
+    "max_tokens": null
+  },
+  "agents": {
+    "max_iterations": 6
+  }
+}
+
+

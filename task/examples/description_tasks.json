@@ -1,0 +1,59 @@
+{
+  "agent_id": "pop_description_agent",
+  "tasks": [
+    {
+      "task_id": "task_001",
+      "description": "分析温馨家居场景与歌词'Lazy Sunday morning light, You and me...'的情感基调，确定匹配的音乐情感类型、性别、音色及节奏范围。",
+      "required_tools": [],
+      "required_knowledge": [
+        "音乐情感分析",
+        "BPM节奏控制"
+      ],
+      "input_context": "场景为温馨家居，已有歌词和音乐风格（Pop, Folk），情感氛围为温馨、幸福、轻松。",
+      "expected_output": "明确的情感类型（如happy或uplifting）、推荐的性别（female/male）、音色倾向（如warm或soft）以及合适的BPM范围（如70-90）。",
+      "constraints": [
+        "情感必须从预定义列表中选择，且需匹配轻松愉悦的氛围",
+        "BPM应反映悠闲节奏，不宜过高"
+      ],
+      "priority": 9
+    },
+    {
+      "task_id": "task_002",
+      "description": "基于任务001的分析结果，结合Pop与Folk音乐风格，设计3组协调且多样的音乐参数组合（包括gender、timbre、genre、emotion、instrument、bpm）。",
+      "required_tools": [],
+      "required_knowledge": [
+        "乐器和音色选择",
+        "音乐参数匹配",
+        "音乐类型的特点和适用场景"
+      ],
+      "input_context": "已知音乐风格为Pop和Folk，场景情感为温馨轻松，歌词体现亲密与宁静。",
+      "expected_output": "3组互不重复的参数组合，每组包含：gender、timbre、genre（可为pop或folk或融合表达）、emotion、instrument（如acoustic guitar and piano）、bpm（整数）。",
+      "constraints": [
+        "乐器组合需符合Folk与Pop的常见配置，如原声吉他、钢琴、轻打击乐等",
+        "音色应偏向warm、soft或bright，避免dark或intense",
+        "确保三组参数在至少两个维度上存在差异以体现多样性"
+      ],
+      "priority": 8
+    },
+    {
+      "task_id": "task_003",
+      "description": "使用pop_descriptions工具，将任务002中设计的3组参数转换为符合格式要求的音乐描述字符串列表。",
+      "required_tools": [
+        "pop_descriptions"
+      ],
+      "required_knowledge": [
+        "音乐参数匹配",
+        "BPM节奏控制"
+      ],
+      "input_context": "已准备好3组完整的音乐参数（gender, timbre, genre, emotion, instrument, bpm）。",
+      "expected_output": "包含3个字符串的列表，每个字符串严格遵循格式：'gender, timbre, genre, emotion, instrument, the bpm is XX.'",
+      "constraints": [
+        "描述必须包含全部6个要素，顺序和格式不可更改",
+        "BPM必须以'the bpm is XX.'结尾，XX为整数",
+        "不得使用未在预定义列表中的参数值"
+      ],
+      "priority": 10
+    }
+  ],
+  "metadata": {}
+}

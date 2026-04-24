@@ -1,0 +1,82 @@
+{
+    "periods": [
+      {
+        "name": "Baroque",
+        "composers": [
+          { "name": "Bach, Johann Sebastian", "instruments": ["Chamber", "Choral", "Keyboard", "Orchestral", "Vocal-Orchestral"] },
+          { "name": "Corelli, Arcangelo", "instruments": ["Chamber", "Orchestral"] },
+          { "name": "Handel, George Frideric", "instruments": ["Chamber", "Keyboard", "Orchestral", "Vocal-Orchestral"] },
+          { "name": "Scarlatti, Domenico", "instruments": ["Keyboard"] },
+          { "name": "Vivaldi, Antonio", "instruments": ["Chamber", "Orchestral", "Vocal-Orchestral"] }
+        ]
+      },
+      {
+        "name": "Classical",
+        "composers": [
+          { "name": "Beethoven, Ludwig van", "instruments": ["Art Song", "Chamber", "Keyboard", "Orchestral"] },
+          { "name": "Haydn, Joseph", "instruments": ["Chamber", "Keyboard", "Orchestral", "Vocal-Orchestral"] },
+          { "name": "Mozart, Wolfgang Amadeus", "instruments": ["Chamber", "Choral", "Keyboard", "Orchestral", "Vocal-Orchestral"] },
+          { "name": "Paradis, Maria Theresia von", "instruments": ["Art Song"] },
+          { "name": "Reichardt, Louise", "instruments": ["Art Song"] },
+          { "name": "Saint-Georges, Joseph Bologne", "instruments": ["Chamber"] },
+          { "name": "Schroter, Corona", "instruments": ["Art Song"] }
+        ]
+      },
+      {
+        "name": "Romantic",
+        "composers": [
+          { "name": "Bartok, Bela", "instruments": ["Keyboard"] },
+          { "name": "Berlioz, Hector", "instruments": ["Choral"] },
+          { "name": "Bizet, Georges", "instruments": ["Art Song"] },
+          { "name": "Boulanger, Lili", "instruments": ["Art Song"] },
+          { "name": "Boulton, Harold", "instruments": ["Art Song"] },
+          { "name": "Brahms, Johannes", "instruments": ["Art Song", "Chamber", "Choral", "Keyboard", "Orchestral"] },
+          { "name": "Burgmuller, Friedrich", "instruments": ["Keyboard"] },
+          { "name": "Butterworth, George", "instruments": ["Art Song"] },
+          { "name": "Chaminade, Cecile", "instruments": ["Art Song"] },
+          { "name": "Chausson, Ernest", "instruments": ["Art Song"] },
+          { "name": "Chopin, Frederic", "instruments": ["Art Song", "Keyboard"] },
+          { "name": "Cornelius, Peter", "instruments": ["Art Song"] },
+          { "name": "Debussy, Claude", "instruments": ["Art Song", "Keyboard"] },
+          { "name": "Dvorak, Antonin", "instruments": ["Chamber", "Choral", "Keyboard", "Orchestral"] },
+          { "name": "Faisst, Clara", "instruments": ["Art Song"] },
+          { "name": "Faure, Gabriel", "instruments": ["Art Song", "Chamber", "Keyboard"] },
+          { "name": "Franz, Robert", "instruments": ["Art Song"] },
+          { "name": "Gonzaga, Chiquinha", "instruments": ["Art Song"] },
+          { "name": "Grandval, Clemence de", "instruments": ["Art Song"] },
+          { "name": "Grieg, Edvard", "instruments": ["Keyboard", "Orchestral"] },
+          { "name": "Hensel, Fanny", "instruments": ["Art Song"] },
+          { "name": "Holmes, Augusta Mary Anne", "instruments": ["Art Song"] },
+          { "name": "Jaell, Marie", "instruments": ["Art Song"] },
+          { "name": "Kinkel, Johanna", "instruments": ["Art Song"] },
+          { "name": "Kralik, Mathilde", "instruments": ["Art Song"] },
+          { "name": "Lang, Josephine", "instruments": ["Art Song"] },
+          { "name": "Lehmann, Liza", "instruments": ["Art Song"] },
+          { "name": "Liszt, Franz", "instruments": ["Keyboard"] },
+          { "name": "Mayer, Emilie", "instruments": ["Chamber"] },
+          { "name": "Medtner, Nikolay", "instruments": ["Keyboard"] },
+          { "name": "Mendelssohn, Felix", "instruments": ["Art Song", "Chamber", "Choral", "Keyboard", "Orchestral"] },
+          { "name": "Munktell, Helena", "instruments": ["Art Song"] },
+          { "name": "Parratt, Walter", "instruments": ["Choral"] },
+          { "name": "Prokofiev, Sergey", "instruments": ["Keyboard"] },
+          { "name": "Rachmaninoff, Sergei", "instruments": ["Choral", "Keyboard"] },
+          { "name": "Ravel, Maurice", "instruments": ["Art Song", "Chamber", "Keyboard"] },
+          { "name": "Saint-Saens, Camille", "instruments": ["Chamber", "Keyboard", "Orchestral"] },
+          { "name": "Satie, Erik", "instruments": ["Art Song", "Keyboard"] },
+          { "name": "Schubert, Franz", "instruments": ["Art Song", "Chamber", "Choral", "Keyboard"] },
+          { "name": "Schumann, Clara", "instruments": ["Art Song"] },
+          { "name": "Schumann, Robert", "instruments": ["Art Song", "Chamber", "Choral", "Keyboard"] },
+          { "name": "Scriabin, Aleksandr", "instruments": ["Keyboard"] },
+          { "name": "Shostakovich, Dmitry", "instruments": ["Chamber", "Keyboard"] },
+          { "name": "Sibelius, Jean", "instruments": ["Keyboard"] },
+          { "name": "Smetana, Bedrich", "instruments": ["Keyboard"] },
+          { "name": "Tchaikovsky, Pyotr", "instruments": ["Keyboard", "Orchestral"] },
+          { "name": "Viardot, Pauline", "instruments": ["Art Song"] },
+          { "name": "Warlock, Peter", "instruments": ["Art Song"] },
+          { "name": "Wolf, Hugo", "instruments": ["Art Song"] },
+          { "name": "Zumsteeg, Emilie", "instruments": ["Art Song"] }
+        ]
+      }
+    ]
+  }
+  

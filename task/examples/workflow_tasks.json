@@ -1,0 +1,186 @@
+{
+  "歌词生成": {
+    "agent_id": "pop_gt_lyric_agent",
+    "tasks": [
+      {
+        "task_id": "task_001",
+        "description": "分析温馨家居场景的情感基调、叙事元素与氛围特征，提取可用于歌词创作的关键情感关键词和意象（如‘温暖’、‘陪伴’、‘小狗’、‘家’等），为后续歌词生成提供结构化输入。",
+        "required_tools": [],
+        "required_knowledge": [
+          "情感表达",
+          "叙事结构",
+          "音乐"
+        ],
+        "input_context": "场景描述：一个温馨的家居场景视频，包含6个关键帧，总时长30秒。主要内容：年轻女性与她的小狗在家中亲密互动。情感基调：温暖、幸福、轻松愉悦。",
+        "expected_output": "一份结构化的场景情感与意象分析摘要，包括核心情感（如温暖、幸福）、主要角色（女性、小狗）、关键动作（互动、依偎）、氛围关键词（轻松、安心、日常美好）等。",
+        "constraints": [
+          "必须聚焦于流行音乐歌词创作所需的情感与叙事要素",
+          "不得引入与场景无关的外部元素",
+          "分析结果需支持中英文歌词创作"
+        ],
+        "priority": 9
+      },
+      {
+        "task_id": "task_002",
+        "description": "基于温馨家居场景的结构化描述（含时间段、主体声音内容与风格、环境声音内容与风格），调用 pop_gt_lyric 工具生成符合温暖幸福情感基调的完整流行歌词，包含 intro、verse、chorus 和 outro 结构。",
+        "required_tools": [
+          "pop_gt_lyric"
+        ],
+        "required_knowledge": [
+          "流行音乐歌词创作",
+          "韵律和节奏",
+          "歌词结构",
+          "情感表达"
+        ],
+        "input_context": "已解析的 json_scene 数据，包含6个时间段的主体（女性与小狗互动）和环境（家居背景音）的声音内容与风格，整体情感为温暖、幸福、轻松愉悦。",
+        "expected_output": "格式规范的歌词字符串，结构为：[[intro-short] ; [verse] 句子1.句子2... ; [chorus] ... ; [outro-short]]，语言风格温馨自然，情感积极，长度适中，适配30秒视频节奏。",
+        "constraints": [
+          "必须严格遵循歌词结构格式（使用分号分隔各部分，句号分隔句子）",
+          "歌词情感必须与场景一致，不得出现悲伤、孤独等负面情绪",
+          "语言可为中文、英文或中英混合，但需风格统一",
+          "避免歌词过长或过短，需匹配30秒视频时长"
+        ],
+        "priority": 10
+      }
+    ],
+    "metadata": {}
+  },
+  "音乐风格选择": {
+    "agent_id": "pop_audio_type_agent",
+    "tasks": [
+      {
+        "task_id": "task_001",
+        "description": "分析温馨家居场景的情感基调与氛围，识别适合的音乐风格候选类型。重点考虑温暖、幸福、轻松愉悦的情感特征，并结合家庭与宠物互动的日常情境，初步筛选出两个最匹配的音乐风格。",
+        "required_tools": [
+          "pop_audio_type"
+        ],
+        "required_knowledge": [
+          "音乐风格识别",
+          "场景氛围分析"
+        ],
+        "input_context": "场景描述：一个温馨的家居场景视频，包含6个关键帧，总时长30秒。主要内容：年轻女性与她的小狗在家中亲密互动。情感基调：温暖、幸福、轻松愉悦。",
+        "expected_output": "两个符合场景情感基调的候选音乐风格（如Pop、Folk等），确保风格来源于预定义列表且彼此不同以体现多样性。",
+        "constraints": [
+          "只能从预定义的音乐风格列表中选择",
+          "必须贴合温暖、幸福、轻松愉悦的情感基调",
+          "鼓励选择多样化的音乐类型",
+          "避免使用Auto以外的非具体风格"
+        ],
+        "priority": 9
+      },
+      {
+        "task_id": "task_002",
+        "description": "调用pop_audio_type工具，基于完整的场景序列输入，生成最终的auto_prompt_audio_type音乐风格列表，确保输出结果与歌词内容（如有）及整体氛围一致，并满足默认返回两个风格的要求。",
+        "required_tools": [
+          "pop_audio_type"
+        ],
+        "required_knowledge": [
+          "音乐类型匹配",
+          "音乐风格识别"
+        ],
+        "input_context": "已结构化的json_scene输入，包含上述温馨家居场景的完整描述和关键帧信息。",
+        "expected_output": "由pop_audio_type工具返回的包含两个音乐风格的字典结果，例如{'auto_prompt_audio_type': ['Pop', 'Folk']}，风格需来自合法选项且符合场景情感。",
+        "constraints": [
+          "必须使用pop_audio_type工具进行处理",
+          "输出必须是预定义风格中的两个选项",
+          "风格需与场景情感一致",
+          "不能返回未在知识库中定义的风格"
+        ],
+        "priority": 10
+      }
+    ],
+    "metadata": {}
+  },
+  "音乐描述生成": {
+    "agent_id": "pop_description_agent",
+    "tasks": [
+      {
+        "task_id": "task_001",
+        "description": "分析温馨家居场景的情感基调，并基于歌词（如有）和场景内容，确定合适的音乐参数组合，包括情感、性别、类型、乐器、音色和BPM。",
+        "required_tools": [],
+        "required_knowledge": [
+          "音乐情感分析",
+          "音乐参数匹配",
+          "BPM节奏控制"
+        ],
+        "input_context": "场景描述：一个温馨的家居场景视频，包含6个关键帧，总时长30秒。主要内容：年轻女性与她的小狗在家中亲密互动。情感基调：温暖、幸福、轻松愉悦。",
+        "expected_output": "一组协调且符合场景氛围的音乐参数，包括emotion（如happy或uplifting）、gender（female）、genre（如pop）、instrument（如acoustic guitar and piano）、timbre（如warm或bright）、bpm（如80-100之间）。",
+        "constraints": [
+          "情感必须为happy、uplifting或romantic之一",
+          "性别应优先选择female以匹配主角",
+          "BPM应在70-100之间以体现轻松愉悦的节奏",
+          "乐器和音色需传达温馨和亲密感"
+        ],
+        "priority": 9
+      },
+      {
+        "task_id": "task_002",
+        "description": "使用pop_descriptions工具，根据任务001确定的音乐参数和提供的场景数据，生成符合格式要求的音乐描述字符串列表。",
+        "required_tools": [
+          "pop_descriptions"
+        ],
+        "required_knowledge": [
+          "乐器和音色选择",
+          "音乐参数匹配",
+          "BPM节奏控制"
+        ],
+        "input_context": "已确定的音乐参数（emotion, gender, genre, instrument, timbre, bpm）及原始场景描述作为json_scene输入。",
+        "expected_output": "一个包含至少一条描述的字符串列表，每条描述严格遵循格式：'female, warm, pop, happy, acoustic guitar and piano, the bpm is 88.'",
+        "constraints": [
+          "描述必须包含所有六个参数并用逗号分隔",
+          "BPM格式必须为'the bpm is XX.'",
+          "避免与其他可能生成的描述重复",
+          "确保整体语调与温馨、幸福、轻松的场景一致"
+        ],
+        "priority": 10
+      }
+    ],
+    "metadata": {}
+  },
+  "索引生成": {
+    "agent_id": "pop_idx_agent",
+    "tasks": [
+      {
+        "task_id": "task_001",
+        "description": "分析场景描述和情感基调，生成符合温馨家居氛围的音乐风格标签和简要音乐描述，为后续索引生成提供结构化输入。",
+        "required_tools": [],
+        "required_knowledge": [
+          "音乐",
+          "主题提取",
+          "情感分析"
+        ],
+        "input_context": "场景：温馨家居视频，年轻女性与小狗互动；情感基调：温暖、幸福、轻松愉悦。",
+        "expected_output": "结构化的音频类型（如 'acoustic pop' 或 '轻快钢琴'）和音乐描述（如 '柔和、欢快、充满爱意的旋律'）。",
+        "constraints": [
+          "音乐风格需贴合温馨家庭场景",
+          "描述需体现温暖与轻松的情感",
+          "输出应简洁且可用于索引生成"
+        ],
+        "priority": 8
+      },
+      {
+        "task_id": "task_002",
+        "description": "调用 pop_idx 工具，基于任务1生成的音乐风格和描述，结合当前时间戳，生成两个符合命名规范且语言适配的唯一音乐作品索引标识符。",
+        "required_tools": [
+          "pop_idx"
+        ],
+        "required_knowledge": [
+          "时间戳生成",
+          "命名规范",
+          "语言识别",
+          "内容提取"
+        ],
+        "input_context": "gt_lyric: ''（无歌词，视为BGM）；audio_type 和 descriptions 来自 task_001 的输出。",
+        "expected_output": "包含两个唯一索引的列表，格式如 ['YYYY-MM-DD-HH-MM-名字1', 'YYYY-MM-DD-HH-MM-名字2']，名字应反映温馨、轻松的主题。",
+        "constraints": [
+          "必须包含正确格式的时间戳（YYYY-MM-DD-HH-MM）",
+          "因无歌词，视为BGM，名字可随机但需贴合场景情感",
+          "确保两个索引名字不同以保证唯一性",
+          "名字应简洁、有意义，体现温暖幸福氛围"
+        ],
+        "priority": 10
+      }
+    ],
+    "metadata": {}
+  }
+}

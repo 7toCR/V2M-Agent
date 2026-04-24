@@ -1,0 +1,27 @@
+{
+  "model": {
+    "name": "qwen3-max",
+    "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+    "api_key_env": "MCP_API_KEY",
+    "temperature": 0.7,
+    "max_tokens": 8192
+  },
+  "expert": {
+    "name": "deepseek-v3.2",
+    "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+    "api_key_env": "DASHSCOPE_API_KEY",
+    "temperature": 0.7,
+    "max_tokens": 8192
+  },
+  "agents": {
+    "max_iterations": 15
+  },
+  "supervisor": {
+    "max_reflect_retries": 2,
+    "default_piece": 2,
+    "default_model": "SongGeneration"
+  },
+  "verifier": {
+    "max_reflect_retries": 2
+  }
+}

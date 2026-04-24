@@ -1,0 +1,12 @@
+{
+  "model": {
+    "name": "qwen3-max",
+    "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+    "api_key_env": "MCP_API_KEY",
+    "temperature": 0.7,
+    "max_tokens": 4096
+  },
+  "agents": {
+    "max_iterations": 20
+  }
+}

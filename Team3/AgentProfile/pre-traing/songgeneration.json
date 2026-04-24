@@ -1,0 +1,78 @@
+{
+  "model": "SongGeneration",
+  "variant": "Ours-Vocal",
+  "descriptions": {
+    "gender": ["female", "male"],
+    "emotion": ["sad", "emotional", "angry", "happy", "uplifting", "intense", "romantic", "melancholic"],
+    "genre": [
+      "pop", "electronic", "hip hop", "rock", "jazz", "blues", "classical", "rap",
+      "country", "classic rock", "hard rock", "folk", "soul",
+      "dance, electronic", "rockabilly", "dance, dancepop, house, pop",
+      "reggae", "experimental", "dance, pop", "dance, deephouse, electronic",
+      "k-pop", "experimental pop", "pop punk", "rock and roll",
+      "R&B", "varies", "pop rock"
+    ],
+    "instrument": [
+      "synthesizer and piano", "piano and drums", "piano and synthesizer",
+      "synthesizer and drums", "piano and strings", "guitar and drums",
+      "guitar and piano", "piano and double bass", "piano and guitar",
+      "acoustic guitar and piano", "acoustic guitar and synthesizer",
+      "synthesizer and guitar", "piano and saxophone", "saxophone and piano",
+      "piano and violin", "electric guitar and drums", "acoustic guitar and drums",
+      "synthesizer", "guitar and fiddle", "guitar and harmonica",
+      "synthesizer and acoustic guitar", "beats", "piano",
+      "acoustic guitar and fiddle", "brass and piano", "bass and drums",
+      "violin", "acoustic guitar and harmonica", "piano and cello",
+      "saxophone and trumpet", "guitar and banjo", "guitar and synthesizer",
+      "saxophone", "violin and piano", "synthesizer and bass",
+      "synthesizer and electric guitar", "electric guitar and piano",
+      "beats and piano", "guitar"
+    ],
+    "timbre": ["dark", "bright", "warm", "rock", "varies", "soft", "vocal"],
+    "bpm_range": [60, 200]
+  },
+  "audio_type": [
+    "Pop", "R&B", "Dance", "Jazz", "Folk", "Rock",
+    "Chinese Style", "Chinese Tradition", "Metal", "Reggae",
+    "Chinese Opera", "Auto"
+  ],
+  "lyric_structure_tags": [
+    "[intro-short]", "[intro-medium]", "[intro-long]",
+    "[verse]", "[chorus]", "[bridge]",
+    "[outro-short]", "[outro-medium]", "[outro-long]",
+    "[inst-short]", "[inst-medium]", "[inst-long]"
+  ],
+  "description_format": "{gender}, {emotion}, {genre}, {timbre}, {instrument}, the bpm is {bpm}.",
+  "cross_field_rules": [
+    {
+      "rule": "emotion_timbre_alignment",
+      "description": "sad/melancholic emotions should pair with dark/soft timbre, not bright/rock",
+      "conflicts": [
+        {"if_emotion": ["sad", "melancholic"], "disallow_timbre": ["bright", "rock"]}
+      ]
+    },
+    {
+      "rule": "emotion_genre_alignment",
+      "description": "angry emotion should not pair with folk/jazz genre",
+      "conflicts": [
+        {"if_emotion": ["angry"], "disallow_genre": ["folk", "jazz"]}
+      ]
+    },
+    {
+      "rule": "audio_type_genre_coherence",
+      "description": "audio_type should broadly align with genre family",
+      "conflicts": [
+        {"if_audio_type": "Rock", "prefer_genre": ["rock", "hard rock", "classic rock", "pop rock", "rock and roll"]},
+        {"if_audio_type": "Jazz", "prefer_genre": ["jazz"]},
+        {"if_audio_type": "Folk", "prefer_genre": ["folk", "country"]},
+        {"if_audio_type": "Metal", "prefer_genre": ["hard rock", "rock"]},
+        {"if_audio_type": "Dance", "prefer_genre": ["electronic", "dance, electronic", "dance, pop", "dance, dancepop, house, pop", "dance, deephouse, electronic", "k-pop"]},
+        {"if_audio_type": "R&B", "prefer_genre": ["R&B", "soul"]}
+      ]
+    },
+    {
+      "rule": "language_title_lyric_match",
+      "description": "Chinese title requires Chinese lyrics; English title requires English lyrics"
+    }
+  ]
+}
