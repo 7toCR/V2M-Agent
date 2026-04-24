@@ -1,0 +1,526 @@
+{
+  "user_requirement": "请综合分析这个新场景的文本、音频、图片和视频内容，完成统一的多模态场景理解，并生成贴合场景情绪、画面节奏、环境声音和叙事氛围的中文流行背景音乐 prompt。",
+  "text_address": [
+    "D:\\github\\NingBGM_4_24\\Input\\scene_17\\scene_17.txt"
+  ],
+  "audio_address": [
+    "D:\\github\\NingBGM_4_24\\Input\\scene_17\\scene_17.MP3"
+  ],
+  "photo_address": [
+    "D:\\github\\NingBGM_4_24\\Input\\scene_17\\scene_17.png"
+  ],
+  "video_address": [
+    "D:\\github\\NingBGM_4_24\\Input\\scene_17\\scene_17.mp4"
+  ],
+  "state": "final",
+  "iteration": 9,
+  "max_iterations": 20,
+  "global_messages": [],
+  "system_prompt_messages": [
+    "content='# Role: Requirement Analysis Supervisor\\n\\nTeam 1 supervisor responsible for parsing user requirements, determining which teams and experts are needed, matching requirements to agent profiles, and generating structured task packets with constraints for Team 2 and Team 3.\\n\\n\\n## Responsibilities:\\n- Parse user requirements and multimodal input specifications\\n- Determine which modalities (text, audio, image, video) are present and relevant\\n- Decide which teams (Team 2 Scene Understanding, Team 3 Music Generation) need to participate\\n- Read and match agent profiles to user requirements\\n- Extract specific instructions for each participating team and expert\\n- Generate constraints based on agent profiles and user requirements\\n- Output structured task packets for downstream teams\\n- Coordinate requirement analysis workflow following Algorithm 1\\n\\n## Expertise:\\n- Requirement analysis and decomposition\\n- Multimodal input classification\\n- Agent capability matching\\n- Task packet generation\\n- Constraint extraction from profiles\\n- Team coordination and orchestration\\n- Algorithm 1: Parse, DetermineNeed, ReadProfile, Match, ExtractInstruction, GenerateConstraints\\n\\n## Available Tools:\\n- parse_requirement: Parse user requirement text and extract key objectives, constraints, and modality specifications\\n- determine_need: Determine which teams and experts are needed based on parsed requirements and available modalities\\n- read_profile: Read agent profiles for specified teams and experts\\n- generate_task_packet: Generate structured task packet for a team containing instructions and constraints\\n\\n## Constraints:\\n- Must follow Algorithm 1 workflow strictly\\n- Cannot skip DetermineNeed step\\n- Cannot invent constraints - must extract from agent profiles\\n- Must validate that at least one modality is present\\n\\n## Workflow:\\n- Initialize with user requirement and multimodal input paths\\n- Execute Algorithm 1 workflow sequentially\\n- Parse user requirement to extract objectives and hints\\n- Determine which modalities are present\\n- Decide which teams and experts need to participate\\n- Read agent profiles for selected teams and experts\\n- Match parsed requirements to agent capabilities\\n- Extract specific task instructions for each agent\\n- Generate constraints from agent profiles\\n- Assemble Team 2 and Team 3 task packets\\n- Output requirement_analysis_result\\n\\n## Guide:\\nAlgorithm 1 Implementation Guide:\\n1. Parse(R_user): Extract objectives, modalities, constraints\\n2. DetermineNeed(objectives, modalities): Decide which teams/experts needed\\n3. ReadProfile(P_supervisor, P_experts): Load relevant agent profiles\\n4. Match(objectives, profiles): Map requirements to capabilities\\n5. ExtractInstruction(matches): Generate task instructions (I_i)\\n6. GenerateConstraints(profiles, instructions): Extract constraints (C_i)\\n7. Output: T_experts = [(I_1, C_1), ..., (I_n, C_n)] as task packets\\n' additional_kwargs={} response_metadata={}"
+  ],
+  "parsed_requirement": {
+    "objectives": [
+      "综合分析新场景的多模态内容（文本、音频、图片、视频）",
+      "完成统一的多模态场景理解",
+      "生成贴合场景情绪、画面节奏、环境声音和叙事氛围的中文流行背景音乐 prompt"
+    ],
+    "constraints": [
+      "生成的音乐 prompt 必须为中文流行风格",
+      "音乐 prompt 需贴合场景的情绪、画面节奏、环境声音和叙事氛围"
+    ],
+    "modality_hints": [
+      "text",
+      "audio",
+      "image",
+      "video"
+    ]
+  },
+  "available_modalities": [
+    "text",
+    "audio",
+    "photo",
+    "video"
+  ],
+  "needed_teams": {
+    "Team2": [
+      "scene_understanding_supervisor"
+    ],
+    "Team3": [
+      "music_generation_supervisor"
+    ]
+  },
+  "team_profiles": {
+    "Team2": {
+      "agent_id": "scene_understanding_supervisor_v1",
+      "description": "Team 2 Scene Understanding Supervisor that reads expert AgentProfiles (Text, Audio, Photo, Video), generates per-expert tasks via Algorithm 1, dispatches parallel expert execution, and forwards results to the SceneVerifier for four-stage fusion and validation. Follows Think-Act-Observe-Reflect iterative loop via LangGraph.",
+      "role": {
+        "name": "Scene Understanding Supervisor",
+        "description": "Team 2 supervisor responsible for coordinating multimodal scene understanding through a four-stage workflow: Temporal Anchoring, Inter-modal Interpolation, Audio-Visual Alignment, and Semantic Refinement.",
+        "responsibilities": [
+          "Coordinate parallel execution of modality-specific experts",
+          "Execute Stage 1: Temporal Anchoring",
+          "Execute Stage 2: Inter-modal Interpolation",
+          "Execute Stage 3: Audio-Visual Alignment",
+          "Execute Stage 4: Semantic Refinement",
+          "Verify scene consistency",
+          "Output unified 9-field scene representations"
+        ],
+        "expertise": [
+          "Multimodal fusion and alignment",
+          "Four-stage scene understanding workflow",
+          "Posterior correction mechanisms",
+          "Scene consistency verification"
+        ]
+      },
+      "constraints": [
+        "Must read expert AgentProfiles before generating tasks (Algorithm 1)",
+        "Must dispatch experts in parallel using asyncio.gather with return_exceptions=True",
+        "Must forward ALL expert results to the Verifier — never skip a modality",
+        "Must handle Verifier failure via Reflect → Retry loop (max 2 retries)",
+        "All output scenes must have exactly 9 fields",
+        "Follows Think-Act-Observe-Reflect iterative loop"
+      ],
+      "knowledge": [
+        {
+          "domain": "multimodal_understanding",
+          "concepts": [
+            "Temporal Anchoring: video keyframes establish timeline baseline",
+            "Semantic Refinement: posterior correction using global constraints",
+            "9-field unified scene representation"
+          ],
+          "rules": [
+            "Video modality provides temporal anchoring baseline",
+            "Text modality provides global constraints T_bg for refinement",
+            "All scenes must have 9 fields"
+          ]
+        },
+        {
+          "domain": "workflow",
+          "concepts": [
+            "Four-stage sequential workflow",
+            "Parallel expert execution before Stage 1"
+          ],
+          "rules": [
+            "Stages must execute in order: 1 → 2 → 3 → 4",
+            "Modality experts execute in parallel before Stage 1"
+          ]
+        }
+      ]
+    },
+    "Team3": {
+      "agent_id": "music_generation_supervisor_v1",
+      "description": "Team 3 Music Generation Supervisor implementing the three-step music generation workflow with strategic planning, parallel expert execution, and cross-expert verification.",
+      "role": {
+        "name": "Music Generation Supervisor",
+        "description": "Team 3 supervisor responsible for coordinating music prompt generation through strategic planning, parallel expert execution, cross-expert verification, and collaborative modification.",
+        "responsibilities": [
+          "Execute strategic planning to generate Musical Blueprint",
+          "Coordinate parallel execution of music generation experts",
+          "Generate idx, gt_lyric, descriptions, auto_prompt_audio_type",
+          "Verify consistency across all generated components",
+          "Trigger collaborative modification when conflicts detected",
+          "Output structured prompt list"
+        ],
+        "expertise": [
+          "Musical blueprint planning",
+          "Multi-expert coordination",
+          "Cross-expert verification",
+          "Collaborative modification operator"
+        ]
+      },
+      "constraints": [
+        "Must execute three steps sequentially",
+        "Cannot skip strategic planning",
+        "Must verify all prompts before output",
+        "All output prompts must have exactly four fields"
+      ],
+      "knowledge": [
+        {
+          "domain": "music",
+          "concepts": [
+            "Musical Blueprint: model, lyric_style, emotional_key",
+            "Strategic Planning: analyze scenes to determine musical direction",
+            "Four-field prompt structure: idx, gt_lyric, descriptions, auto_prompt_audio_type"
+          ],
+          "rules": [
+            "Blueprint must be generated before expert execution",
+            "Title language must match lyric language",
+            "Emotional tone must align across all components"
+          ]
+        },
+        {
+          "domain": "workflow",
+          "concepts": [
+            "Three-step workflow: Strategic Planning → Creative Execution → Cross-Expert Alignment",
+            "Parallel expert execution pattern"
+          ],
+          "rules": [
+            "Strategic Planning must complete before Creative Execution",
+            "Creative Execution experts run in parallel",
+            "Verification runs after all experts complete"
+          ]
+        }
+      ]
+    }
+  },
+  "requirement_matches": {
+    "Team2": {
+      "objectives_handled": [
+        "综合分析新场景的多模态内容（文本、音频、图片、视频）",
+        "完成统一的多模态场景理解"
+      ],
+      "modalities_processed": [
+        "text",
+        "audio",
+        "photo",
+        "video"
+      ],
+      "confidence_score": 0.98
+    },
+    "Team3": {
+      "objectives_handled": [
+        "生成贴合场景情绪、画面节奏、环境声音和叙事氛围的中文流行背景音乐 prompt"
+      ],
+      "modalities_processed": [],
+      "confidence_score": 0.95
+    }
+  },
+  "task_instructions": {
+    "Team2": "请对输入的新场景中包含的文本、音频、图片和视频内容进行综合多模态分析，提取关键语义信息、情感基调、视觉元素、声音特征及叙事线索，并整合生成一份统一的多模态场景理解报告，明确描述场景的整体情绪、节奏、环境氛围和叙事逻辑，为后续音乐生成提供结构化上下文支持。",
+    "Team3": "基于Team2提供的统一多模态场景理解报告，生成一个精准贴合该场景情绪、画面节奏、环境声音和叙事氛围的中文流行背景音乐生成提示（prompt），要求prompt清晰描述音乐风格、节奏快慢、情绪色彩、乐器编排及氛围关键词，确保可直接用于AI音乐生成模型。"
+  },
+  "task_constraints": {
+    "Team2": [
+      "Must read expert AgentProfiles before generating tasks (Algorithm 1)",
+      "Must dispatch experts in parallel using asyncio.gather with return_exceptions=True",
+      "Must forward ALL expert results to the Verifier — never skip a modality",
+      "Must handle Verifier failure via Reflect → Retry loop (max 2 retries)",
+      "All output scenes must have exactly 9 fields",
+      "Follows Think-Act-Observe-Reflect iterative loop",
+      "Video modality provides temporal anchoring baseline",
+      "Text modality provides global constraints T_bg for refinement",
+      "All scenes must have 9 fields",
+      "Stages must execute in order: 1 → 2 → 3 → 4",
+      "Modality experts execute in parallel before Stage 1"
+    ],
+    "Team3": [
+      "Must execute three steps sequentially",
+      "Cannot skip strategic planning",
+      "Must verify all prompts before output",
+      "All output prompts must have exactly four fields",
+      "Blueprint must be generated before expert execution",
+      "Title language must match lyric language",
+      "Emotional tone must align across all components",
+      "Strategic Planning must complete before Creative Execution",
+      "Creative Execution experts run in parallel",
+      "Verification runs after all experts complete"
+    ]
+  },
+  "team2_task_packet": {
+    "team_name": "Team2",
+    "instruction": "请对输入的新场景中包含的文本、音频、图片和视频内容进行综合多模态分析，提取关键语义信息、情感基调、视觉元素、声音特征及叙事线索，并整合生成一份统一的多模态场景理解报告，明确描述场景的整体情绪、节奏、环境氛围和叙事逻辑，为后续音乐生成提供结构化上下文支持。",
+    "constraints": [
+      "Must read expert AgentProfiles before generating tasks (Algorithm 1)",
+      "Must dispatch experts in parallel using asyncio.gather with return_exceptions=True",
+      "Must forward ALL expert results to the Verifier — never skip a modality",
+      "Must handle Verifier failure via Reflect → Retry loop (max 2 retries)",
+      "All output scenes must have exactly 9 fields",
+      "Follows Think-Act-Observe-Reflect iterative loop",
+      "Video modality provides temporal anchoring baseline",
+      "Text modality provides global constraints T_bg for refinement",
+      "All scenes must have 9 fields",
+      "Stages must execute in order: 1 → 2 → 3 → 4",
+      "Modality experts execute in parallel before Stage 1"
+    ],
+    "modalities": [
+      "text",
+      "audio",
+      "photo",
+      "video"
+    ],
+    "modality_addresses": {
+      "text_address": [
+        "D:\\github\\NingBGM_4_24\\Input\\scene_17\\scene_17.txt"
+      ],
+      "audio_address": [
+        "D:\\github\\NingBGM_4_24\\Input\\scene_17\\scene_17.MP3"
+      ],
+      "photo_address": [
+        "D:\\github\\NingBGM_4_24\\Input\\scene_17\\scene_17.png"
+      ],
+      "video_address": [
+        "D:\\github\\NingBGM_4_24\\Input\\scene_17\\scene_17.mp4"
+      ]
+    },
+    "user_requirement": "请综合分析这个新场景的文本、音频、图片和视频内容，完成统一的多模态场景理解，并生成贴合场景情绪、画面节奏、环境声音和叙事氛围的中文流行背景音乐 prompt。",
+    "parsed_requirement": {
+      "objectives": [
+        "综合分析新场景的多模态内容（文本、音频、图片、视频）",
+        "完成统一的多模态场景理解",
+        "生成贴合场景情绪、画面节奏、环境声音和叙事氛围的中文流行背景音乐 prompt"
+      ],
+      "constraints": [
+        "生成的音乐 prompt 必须为中文流行风格",
+        "音乐 prompt 需贴合场景的情绪、画面节奏、环境声音和叙事氛围"
+      ],
+      "modality_hints": [
+        "text",
+        "audio",
+        "image",
+        "video"
+      ]
+    },
+    "match_info": {
+      "objectives_handled": [
+        "综合分析新场景的多模态内容（文本、音频、图片、视频）",
+        "完成统一的多模态场景理解"
+      ],
+      "modalities_processed": [
+        "text",
+        "audio",
+        "photo",
+        "video"
+      ],
+      "confidence_score": 0.98
+    }
+  },
+  "team3_task_packet": {
+    "team_name": "Team3",
+    "instruction": "基于Team2提供的统一多模态场景理解报告，生成一个精准贴合该场景情绪、画面节奏、环境声音和叙事氛围的中文流行背景音乐生成提示（prompt），要求prompt清晰描述音乐风格、节奏快慢、情绪色彩、乐器编排及氛围关键词，确保可直接用于AI音乐生成模型。",
+    "constraints": [
+      "Must execute three steps sequentially",
+      "Cannot skip strategic planning",
+      "Must verify all prompts before output",
+      "All output prompts must have exactly four fields",
+      "Blueprint must be generated before expert execution",
+      "Title language must match lyric language",
+      "Emotional tone must align across all components",
+      "Strategic Planning must complete before Creative Execution",
+      "Creative Execution experts run in parallel",
+      "Verification runs after all experts complete"
+    ],
+    "modalities": [
+      "text",
+      "audio",
+      "photo",
+      "video"
+    ],
+    "modality_addresses": {
+      "text_address": [
+        "D:\\github\\NingBGM_4_24\\Input\\scene_17\\scene_17.txt"
+      ],
+      "audio_address": [
+        "D:\\github\\NingBGM_4_24\\Input\\scene_17\\scene_17.MP3"
+      ],
+      "photo_address": [
+        "D:\\github\\NingBGM_4_24\\Input\\scene_17\\scene_17.png"
+      ],
+      "video_address": [
+        "D:\\github\\NingBGM_4_24\\Input\\scene_17\\scene_17.mp4"
+      ]
+    },
+    "user_requirement": "请综合分析这个新场景的文本、音频、图片和视频内容，完成统一的多模态场景理解，并生成贴合场景情绪、画面节奏、环境声音和叙事氛围的中文流行背景音乐 prompt。",
+    "parsed_requirement": {
+      "objectives": [
+        "综合分析新场景的多模态内容（文本、音频、图片、视频）",
+        "完成统一的多模态场景理解",
+        "生成贴合场景情绪、画面节奏、环境声音和叙事氛围的中文流行背景音乐 prompt"
+      ],
+      "constraints": [
+        "生成的音乐 prompt 必须为中文流行风格",
+        "音乐 prompt 需贴合场景的情绪、画面节奏、环境声音和叙事氛围"
+      ],
+      "modality_hints": [
+        "text",
+        "audio",
+        "image",
+        "video"
+      ]
+    },
+    "match_info": {
+      "objectives_handled": [
+        "生成贴合场景情绪、画面节奏、环境声音和叙事氛围的中文流行背景音乐 prompt"
+      ],
+      "modalities_processed": [],
+      "confidence_score": 0.95
+    }
+  },
+  "requirement_analysis_result": {
+    "user_requirement": "请综合分析这个新场景的文本、音频、图片和视频内容，完成统一的多模态场景理解，并生成贴合场景情绪、画面节奏、环境声音和叙事氛围的中文流行背景音乐 prompt。",
+    "parsed_requirement": {
+      "objectives": [
+        "综合分析新场景的多模态内容（文本、音频、图片、视频）",
+        "完成统一的多模态场景理解",
+        "生成贴合场景情绪、画面节奏、环境声音和叙事氛围的中文流行背景音乐 prompt"
+      ],
+      "constraints": [
+        "生成的音乐 prompt 必须为中文流行风格",
+        "音乐 prompt 需贴合场景的情绪、画面节奏、环境声音和叙事氛围"
+      ],
+      "modality_hints": [
+        "text",
+        "audio",
+        "image",
+        "video"
+      ]
+    },
+    "available_modalities": [
+      "text",
+      "audio",
+      "photo",
+      "video"
+    ],
+    "needed_teams": {
+      "Team2": [
+        "scene_understanding_supervisor"
+      ],
+      "Team3": [
+        "music_generation_supervisor"
+      ]
+    },
+    "team2_task_packet": {
+      "team_name": "Team2",
+      "instruction": "请对输入的新场景中包含的文本、音频、图片和视频内容进行综合多模态分析，提取关键语义信息、情感基调、视觉元素、声音特征及叙事线索，并整合生成一份统一的多模态场景理解报告，明确描述场景的整体情绪、节奏、环境氛围和叙事逻辑，为后续音乐生成提供结构化上下文支持。",
+      "constraints": [
+        "Must read expert AgentProfiles before generating tasks (Algorithm 1)",
+        "Must dispatch experts in parallel using asyncio.gather with return_exceptions=True",
+        "Must forward ALL expert results to the Verifier — never skip a modality",
+        "Must handle Verifier failure via Reflect → Retry loop (max 2 retries)",
+        "All output scenes must have exactly 9 fields",
+        "Follows Think-Act-Observe-Reflect iterative loop",
+        "Video modality provides temporal anchoring baseline",
+        "Text modality provides global constraints T_bg for refinement",
+        "All scenes must have 9 fields",
+        "Stages must execute in order: 1 → 2 → 3 → 4",
+        "Modality experts execute in parallel before Stage 1"
+      ],
+      "modalities": [
+        "text",
+        "audio",
+        "photo",
+        "video"
+      ],
+      "modality_addresses": {
+        "text_address": [
+          "D:\\github\\NingBGM_4_24\\Input\\scene_17\\scene_17.txt"
+        ],
+        "audio_address": [
+          "D:\\github\\NingBGM_4_24\\Input\\scene_17\\scene_17.MP3"
+        ],
+        "photo_address": [
+          "D:\\github\\NingBGM_4_24\\Input\\scene_17\\scene_17.png"
+        ],
+        "video_address": [
+          "D:\\github\\NingBGM_4_24\\Input\\scene_17\\scene_17.mp4"
+        ]
+      },
+      "user_requirement": "请综合分析这个新场景的文本、音频、图片和视频内容，完成统一的多模态场景理解，并生成贴合场景情绪、画面节奏、环境声音和叙事氛围的中文流行背景音乐 prompt。",
+      "parsed_requirement": {
+        "objectives": [
+          "综合分析新场景的多模态内容（文本、音频、图片、视频）",
+          "完成统一的多模态场景理解",
+          "生成贴合场景情绪、画面节奏、环境声音和叙事氛围的中文流行背景音乐 prompt"
+        ],
+        "constraints": [
+          "生成的音乐 prompt 必须为中文流行风格",
+          "音乐 prompt 需贴合场景的情绪、画面节奏、环境声音和叙事氛围"
+        ],
+        "modality_hints": [
+          "text",
+          "audio",
+          "image",
+          "video"
+        ]
+      },
+      "match_info": {
+        "objectives_handled": [
+          "综合分析新场景的多模态内容（文本、音频、图片、视频）",
+          "完成统一的多模态场景理解"
+        ],
+        "modalities_processed": [
+          "text",
+          "audio",
+          "photo",
+          "video"
+        ],
+        "confidence_score": 0.98
+      }
+    },
+    "team3_task_packet": {
+      "team_name": "Team3",
+      "instruction": "基于Team2提供的统一多模态场景理解报告，生成一个精准贴合该场景情绪、画面节奏、环境声音和叙事氛围的中文流行背景音乐生成提示（prompt），要求prompt清晰描述音乐风格、节奏快慢、情绪色彩、乐器编排及氛围关键词，确保可直接用于AI音乐生成模型。",
+      "constraints": [
+        "Must execute three steps sequentially",
+        "Cannot skip strategic planning",
+        "Must verify all prompts before output",
+        "All output prompts must have exactly four fields",
+        "Blueprint must be generated before expert execution",
+        "Title language must match lyric language",
+        "Emotional tone must align across all components",
+        "Strategic Planning must complete before Creative Execution",
+        "Creative Execution experts run in parallel",
+        "Verification runs after all experts complete"
+      ],
+      "modalities": [
+        "text",
+        "audio",
+        "photo",
+        "video"
+      ],
+      "modality_addresses": {
+        "text_address": [
+          "D:\\github\\NingBGM_4_24\\Input\\scene_17\\scene_17.txt"
+        ],
+        "audio_address": [
+          "D:\\github\\NingBGM_4_24\\Input\\scene_17\\scene_17.MP3"
+        ],
+        "photo_address": [
+          "D:\\github\\NingBGM_4_24\\Input\\scene_17\\scene_17.png"
+        ],
+        "video_address": [
+          "D:\\github\\NingBGM_4_24\\Input\\scene_17\\scene_17.mp4"
+        ]
+      },
+      "user_requirement": "请综合分析这个新场景的文本、音频、图片和视频内容，完成统一的多模态场景理解，并生成贴合场景情绪、画面节奏、环境声音和叙事氛围的中文流行背景音乐 prompt。",
+      "parsed_requirement": {
+        "objectives": [
+          "综合分析新场景的多模态内容（文本、音频、图片、视频）",
+          "完成统一的多模态场景理解",
+          "生成贴合场景情绪、画面节奏、环境声音和叙事氛围的中文流行背景音乐 prompt"
+        ],
+        "constraints": [
+          "生成的音乐 prompt 必须为中文流行风格",
+          "音乐 prompt 需贴合场景的情绪、画面节奏、环境声音和叙事氛围"
+        ],
+        "modality_hints": [
+          "text",
+          "audio",
+          "image",
+          "video"
+        ]
+      },
+      "match_info": {
+        "objectives_handled": [
+          "生成贴合场景情绪、画面节奏、环境声音和叙事氛围的中文流行背景音乐 prompt"
+        ],
+        "modalities_processed": [],
+        "confidence_score": 0.95
+      }
+    },
+    "quality_score": 1.0,
+    "verification_passed": true,
+    "verify_attempts": 0
+  },
+  "final_answer": "{\n  \"user_requirement\": \"请综合分析这个新场景的文本、音频、图片和视频内容，完成统一的多模态场景理解，并生成贴合场景情绪、画面节奏、环境声音和叙事氛围的中文流行背景音乐 prompt。\",\n  \"parsed_requirement\": {\n    \"objectives\": [\n      \"综合分析新场景的多模态内容（文本、音频、图片、视频）\",\n      \"完成统一的多模态场景理解\",\n      \"生成贴合场景情绪、画面节奏、环境声音和叙事氛围的中文流行背景音乐 prompt\"\n    ],\n    \"constraints\": [\n      \"生成的音乐 prompt 必须为中文流行风格\",\n      \"音乐 prompt 需贴合场景的情绪、画面节奏、环境声音和叙事氛围\"\n    ],\n    \"modality_hints\": [\n      \"text\",\n      \"audio\",\n      \"image\",\n      \"video\"\n    ]\n  },\n  \"available_modalities\": [\n    \"text\",\n    \"audio\",\n    \"photo\",\n    \"video\"\n  ],\n  \"needed_teams\": {\n    \"Team2\": [\n      \"scene_understanding_supervisor\"\n    ],\n    \"Team3\": [\n      \"music_generation_supervisor\"\n    ]\n  },\n  \"team2_task_packet\": {\n    \"team_name\": \"Team2\",\n    \"instruction\": \"请对输入的新场景中包含的文本、音频、图片和视频内容进行综合多模态分析，提取关键语义信息、情感基调、视觉元素、声音特征及叙事线索，并整合生成一份统一的多模态场景理解报告，明确描述场景的整体情绪、节奏、环境氛围和叙事逻辑，为后续音乐生成提供结构化上下文支持。\",\n    \"constraints\": [\n      \"Must read expert AgentProfiles before generating tasks (Algorithm 1)\",\n      \"Must dispatch experts in parallel using asyncio.gather with return_exceptions=True\",\n      \"Must forward ALL expert results to the Verifier — never skip a modality\",\n      \"Must handle Verifier failure via Reflect → Retry loop (max 2 retries)\",\n      \"All output scenes must have exactly 9 fields\",\n      \"Follows Think-Act-Observe-Reflect iterative loop\",\n      \"Video modality provides temporal anchoring baseline\",\n      \"Text modality provides global constraints T_bg for refinement\",\n      \"All scenes must have 9 fields\",\n      \"Stages must execute in order: 1 → 2 → 3 → 4\",\n      \"Modality experts execute in parallel before Stage 1\"\n    ],\n    \"modalities\": [\n      \"text\",\n      \"audio\",\n      \"photo\",\n      \"video\"\n    ],\n    \"modality_addresses\": {\n      \"text_address\": [\n        \"D:\\\\github\\\\NingBGM_4_24\\\\Input\\\\scene_17\\\\scene_17.txt\"\n      ],\n      \"audio_address\": [\n        \"D:\\\\github\\\\NingBGM_4_24\\\\Input\\\\scene_17\\\\scene_17.MP3\"\n      ],\n      \"photo_address\": [\n        \"D:\\\\github\\\\NingBGM_4_24\\\\Input\\\\scene_17\\\\scene_17.png\"\n      ],\n      \"video_address\": [\n        \"D:\\\\github\\\\NingBGM_4_24\\\\Input\\\\scene_17\\\\scene_17.mp4\"\n      ]\n    },\n    \"user_requirement\": \"请综合分析这个新场景的文本、音频、图片和视频内容，完成统一的多模态场景理解，并生成贴合场景情绪、画面节奏、环境声音和叙事氛围的中文流行背景音乐 prompt。\",\n    \"parsed_requirement\": {\n      \"objectives\": [\n        \"综合分析新场景的多模态内容（文本、音频、图片、视频）\",\n        \"完成统一的多模态场景理解\",\n        \"生成贴合场景情绪、画面节奏、环境声音和叙事氛围的中文流行背景音乐 prompt\"\n      ],\n      \"constraints\": [\n        \"生成的音乐 prompt 必须为中文流行风格\",\n        \"音乐 prompt 需贴合场景的情绪、画面节奏、环境声音和叙事氛围\"\n      ],\n      \"modality_hints\": [\n        \"text\",\n        \"audio\",\n        \"image\",\n        \"video\"\n      ]\n    },\n    \"match_info\": {\n      \"objectives_handled\": [\n        \"综合分析新场景的多模态内容（文本、音频、图片、视频）\",\n        \"完成统一的多模态场景理解\"\n      ],\n      \"modalities_processed\": [\n        \"text\",\n        \"audio\",\n        \"photo\",\n        \"video\"\n      ],\n      \"confidence_score\": 0.98\n    }\n  },\n  \"team3_task_packet\": {\n    \"team_name\": \"Team3\",\n    \"instruction\": \"基于Team2提供的统一多模态场景理解报告，生成一个精准贴合该场景情绪、画面节奏、环境声音和叙事氛围的中文流行背景音乐生成提示（prompt），要求prompt清晰描述音乐风格、节奏快慢、情绪色彩、乐器编排及氛围关键词，确保可直接用于AI音乐生成模型。\",\n    \"constraints\": [\n      \"Must execute three steps sequentially\",\n      \"Cannot skip strategic planning\",\n      \"Must verify all prompts before output\",\n      \"All output prompts must have exactly four fields\",\n      \"Blueprint must be generated before expert execution\",\n      \"Title language must match lyric language\",\n      \"Emotional tone must align across all components\",\n      \"Strategic Planning must complete before Creative Execution\",\n      \"Creative Execution experts run in parallel\",\n      \"Verification runs after all experts complete\"\n    ],\n    \"modalities\": [\n      \"text\",\n      \"audio\",\n      \"photo\",\n      \"video\"\n    ],\n    \"modality_addresses\": {\n      \"text_address\": [\n        \"D:\\\\github\\\\NingBGM_4_24\\\\Input\\\\scene_17\\\\scene_17.txt\"\n      ],\n      \"audio_address\": [\n        \"D:\\\\github\\\\NingBGM_4_24\\\\Input\\\\scene_17\\\\scene_17.MP3\"\n      ],\n      \"photo_address\": [\n        \"D:\\\\github\\\\NingBGM_4_24\\\\Input\\\\scene_17\\\\scene_17.png\"\n      ],\n      \"video_address\": [\n        \"D:\\\\github\\\\NingBGM_4_24\\\\Input\\\\scene_17\\\\scene_17.mp4\"\n      ]\n    },\n    \"user_requirement\": \"请综合分析这个新场景的文本、音频、图片和视频内容，完成统一的多模态场景理解，并生成贴合场景情绪、画面节奏、环境声音和叙事氛围的中文流行背景音乐 prompt。\",\n    \"parsed_requirement\": {\n      \"objectives\": [\n        \"综合分析新场景的多模态内容（文本、音频、图片、视频）\",\n        \"完成统一的多模态场景理解\",\n        \"生成贴合场景情绪、画面节奏、环境声音和叙事氛围的中文流行背景音乐 prompt\"\n      ],\n      \"constraints\": [\n        \"生成的音乐 prompt 必须为中文流行风格\",\n        \"音乐 prompt 需贴合场景的情绪、画面节奏、环境声音和叙事氛围\"\n      ],\n      \"modality_hints\": [\n        \"text\",\n        \"audio\",\n        \"image\",\n        \"video\"\n      ]\n    },\n    \"match_info\": {\n      \"objectives_handled\": [\n        \"生成贴合场景情绪、画面节奏、环境声音和叙事氛围的中文流行背景音乐 prompt\"\n      ],\n      \"modalities_processed\": [],\n      \"confidence_score\": 0.95\n    }\n  },\n  \"quality_score\": 1.0,\n  \"verification_passed\": true,\n  \"verify_attempts\": 0\n}",
+  "complete": true,
+  "verification_result": {
+    "passed": true,
+    "issues": [],
+    "warnings": [],
+    "recommendations": []
+  },
+  "verify_retry_count": 0,
+  "reflection_history": [],
+  "quality_score": 1.0
+}

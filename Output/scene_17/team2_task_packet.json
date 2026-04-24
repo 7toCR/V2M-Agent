@@ -1,0 +1,68 @@
+{
+  "team_name": "Team2",
+  "instruction": "请对输入的新场景中包含的文本、音频、图片和视频内容进行综合多模态分析，提取关键语义信息、情感基调、视觉元素、声音特征及叙事线索，并整合生成一份统一的多模态场景理解报告，明确描述场景的整体情绪、节奏、环境氛围和叙事逻辑，为后续音乐生成提供结构化上下文支持。",
+  "constraints": [
+    "Must read expert AgentProfiles before generating tasks (Algorithm 1)",
+    "Must dispatch experts in parallel using asyncio.gather with return_exceptions=True",
+    "Must forward ALL expert results to the Verifier — never skip a modality",
+    "Must handle Verifier failure via Reflect → Retry loop (max 2 retries)",
+    "All output scenes must have exactly 9 fields",
+    "Follows Think-Act-Observe-Reflect iterative loop",
+    "Video modality provides temporal anchoring baseline",
+    "Text modality provides global constraints T_bg for refinement",
+    "All scenes must have 9 fields",
+    "Stages must execute in order: 1 → 2 → 3 → 4",
+    "Modality experts execute in parallel before Stage 1"
+  ],
+  "modalities": [
+    "text",
+    "audio",
+    "photo",
+    "video"
+  ],
+  "modality_addresses": {
+    "text_address": [
+      "D:\\github\\NingBGM_4_24\\Input\\scene_17\\scene_17.txt"
+    ],
+    "audio_address": [
+      "D:\\github\\NingBGM_4_24\\Input\\scene_17\\scene_17.MP3"
+    ],
+    "photo_address": [
+      "D:\\github\\NingBGM_4_24\\Input\\scene_17\\scene_17.png"
+    ],
+    "video_address": [
+      "D:\\github\\NingBGM_4_24\\Input\\scene_17\\scene_17.mp4"
+    ]
+  },
+  "user_requirement": "请综合分析这个新场景的文本、音频、图片和视频内容，完成统一的多模态场景理解，并生成贴合场景情绪、画面节奏、环境声音和叙事氛围的中文流行背景音乐 prompt。",
+  "parsed_requirement": {
+    "objectives": [
+      "综合分析新场景的多模态内容（文本、音频、图片、视频）",
+      "完成统一的多模态场景理解",
+      "生成贴合场景情绪、画面节奏、环境声音和叙事氛围的中文流行背景音乐 prompt"
+    ],
+    "constraints": [
+      "生成的音乐 prompt 必须为中文流行风格",
+      "音乐 prompt 需贴合场景的情绪、画面节奏、环境声音和叙事氛围"
+    ],
+    "modality_hints": [
+      "text",
+      "audio",
+      "image",
+      "video"
+    ]
+  },
+  "match_info": {
+    "objectives_handled": [
+      "综合分析新场景的多模态内容（文本、音频、图片、视频）",
+      "完成统一的多模态场景理解"
+    ],
+    "modalities_processed": [
+      "text",
+      "audio",
+      "photo",
+      "video"
+    ],
+    "confidence_score": 0.98
+  }
+}

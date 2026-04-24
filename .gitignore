@@ -6,17 +6,10 @@ wheels/
 *.egg-info
 .venv/
 .uv-cache/
-.env
-.env.*
-!.env.example
-client/config_client_server.json
-!client/config_client_server.example.json
-Output/
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
 *.log
-.reference/
-.AGENTS.md
-
+AGENTS.md
+/reference/
 

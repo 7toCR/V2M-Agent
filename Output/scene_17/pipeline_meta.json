@@ -1,0 +1,25 @@
+{
+  "scene_name": "scene_17",
+  "requirement": "请综合分析这个新场景的文本、音频、图片和视频内容，完成统一的多模态场景理解，并生成贴合场景情绪、画面节奏、环境声音和叙事氛围的中文流行背景音乐 prompt。",
+  "multimodal_input": {
+    "text_address": [
+      "D:\\github\\NingBGM_4_24\\Input\\scene_17\\scene_17.txt"
+    ],
+    "audio_address": [
+      "D:\\github\\NingBGM_4_24\\Input\\scene_17\\scene_17.MP3"
+    ],
+    "photo_address": [
+      "D:\\github\\NingBGM_4_24\\Input\\scene_17\\scene_17.png"
+    ],
+    "video_address": [
+      "D:\\github\\NingBGM_4_24\\Input\\scene_17\\scene_17.mp4"
+    ]
+  },
+  "piece": 2,
+  "complete": true,
+  "elapsed_seconds": 446.19,
+  "started_at": "2026-04-24T12:09:51",
+  "finished_at": "2026-04-24T12:17:17",
+  "scene_count": 16,
+  "prompt_count": 2
+}
